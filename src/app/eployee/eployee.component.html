@@ -1,0 +1,81 @@
+<nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+        <h1>Angular</h1>
+        <div class="d-flex">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add
+                Employee</button>
+        </div>
+    </div>
+</nav>
+<table class="table" >
+    <thead>
+        <tr>
+            <th scope="col">Employee ID</th>
+            <th scope="col">first Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email ID</th>
+            <th scope="col">Mobile No.</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of employeeData ">
+            <td>{{row.id}}</td>
+            <td>{{row.firstName}}</td>
+            <td>{{row.lastName}}</td>
+            <td>{{row.email}}</td>
+            <td>{{row.salary}}</td>
+            <td>{{row.contact}}</td>
+            <td>
+                <button  class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="onEdit(row)">Edit</button>
+                <button class="btn btn-danger mx-3" (click)="deleteEmp(row)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title"  id="exampleModalLabel">Employee Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="formValue">
+                    <div class="form-group">
+                        <label for="firstname">FirstName</label>
+                        <input type="text" formControlName="firstName" class="form-control" id="firstname">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">LastName</label>
+                        <input type="text" formControlName="lastName" class="form-control" id="lastname">
+                    </div>
+                    <div class="form-group">
+                        <label for="EmailID">Email ID</label>
+                        <input type="email" formControlName="email" class="form-control" id="EmailID">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">Contact</label>
+                        <input type="text" formControlName="contact" class="form-control" id="contact">
+                    </div>
+                    <div class="form-group">
+                        <label for="salary">Salary</label>
+                        <input type="text" formControlName="salary" class="form-control" id="salary">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="closeModel" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="postEmployee()">Add</button>
+                <button type="button" class="btn btn-primary" (click)="updateData()">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
