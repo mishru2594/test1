@@ -74,6 +74,9 @@ export class EployeeComponent implements OnInit {
     this.formValue.controls['contact'].setValue(row.contact);
     this.formValue.controls['salary'].setValue(row.salary);
   }
+
+
+  
   updateData(){
     this.empObj.firstName=this.formValue.value.firstName;
     this.empObj.lastName=this.formValue.value.lastName;
